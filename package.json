@@ -1,0 +1,15 @@
+{
+  "name": "practico-3",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file .env src/app.mjs"
+  },
+  "author": "Adrían Marello",
+  "license": "ISC",
+  "description": "Practico 3",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.8.0"
+  }
+}
