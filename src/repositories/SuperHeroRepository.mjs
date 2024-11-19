@@ -2,6 +2,24 @@ import SuperHero from "../models/SuperHero.mjs";
 import IRepository from "./IRepository.mjs";
 
 class SuperHeroRepository extends IRepository {
+
+  async crear(superheroe) {
+    return await SuperHero.create(superheroe);
+  }
+
+  async actualizar(id, superheroe) {
+    return await SuperHero.findByIdAndUpdate(id, superheroe);
+  }
+
+  async deleteById(id) {
+    return await SuperHero.findByIdAndDelete(id);
+  }
+
+  async deleteByName(nombre) {
+    console.log(nombre)
+    return await SuperHero.findOneAndDelete({ nombreSuperheroe: nombre });
+  }
+
   async obtenerPorId(id) {
     return await SuperHero.findById(id);
   }
