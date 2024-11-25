@@ -9,8 +9,15 @@ import {
   obtenerTodosLosSuperheroes 
 } from "../services/superheroesService.mjs";
 import { renderizarListaSuperheroes, renderizarSuperheroe } from "../views/responseView.mjs";
+import { validationResult } from 'express-validator';
 
 export async function crearSuperHeroeController(req, res) {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  
   const superheroe = req.body;
   const result = await crearSuperheroe(superheroe);
   if(result?.error) {
