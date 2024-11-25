@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Superhéroe</title>
+</head>
+<body>
+  <h1>Editar Superhéroe</h1>
+
+  <!-- Formulario para editar un superhéroe -->
+  <form action="/api/heroes/editar/<%= hero._id %>" method="POST">
+    <label for="nombreSuperHeroe">Nombre del Superhéroe:</label>
+    <input type="text" name="nombreSuperHeroe" value="<%= hero.nombreSuperHeroe %>" required><br>
+    
+    <label for="nombreReal">Nombre Real:</label>
+    <input type="text" name="nombreReal" value="<%= hero.nombreReal %>" required><br>
+    
+    <label for="edad">Edad:</label>
+    <input type="number" name="edad" value="<%= hero.edad %>" min="0"><br>
+
+    <label for="debilidad">Debilidad:</label>
+    <input type="text" name="debilidad" value="<%= hero.debilidad %>" required><br>
+
+    <label for="poderes">Poderes (separados por comas):</label>
+    <input type="text" name="poderes" value="<%= hero.poderes.join(', ') %>"><br>
+
+    <label for="aliados">Aliados (separados por comas):</label>
+    <input type="text" name="aliados" value="<%= hero.aliados.join(', ') %>"><br>
+
+    <label for="enemigos">Enemigos (separados por comas):</label>
+    <input type="text" name="enemigos" value="<%= hero.enemigos.join(', ') %>"><br>
+
+    <input type="submit" value="Guardar Cambios">
+  </form>
+</body>
+</html>

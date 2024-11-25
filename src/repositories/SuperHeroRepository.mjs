@@ -17,7 +17,7 @@ class SuperHeroRepository extends IRepository {
 
   async deleteByName(nombre) {
     console.log(nombre)
-    return await SuperHero.findOneAndDelete({ nombreSuperheroe: nombre });
+    return await SuperHero.findOneAndDelete({ nombreSuperHeroe: nombre });
   }
 
   async obtenerPorId(id) {

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Superhéroes</title>
+</head>
+<body>
+  <h1>Lista de Superhéroes</h1>
+  <a href="/api/heroes/crear">Crear Superhéroe</a>
+  <!-- Mostrar la lista de superhéroes -->
+  <h2>Superhéroes Existentes</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nombre del Superhéroe</th>
+        <th>Nombre Real</th>
+        <th>Edad</th>
+        <th>Poderes</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% heroes.forEach(hero => { %>
+        <tr>
+          <td><%= hero.nombreSuperHeroe %></td>
+          <td><%= hero.nombreReal %></td>
+          <td><%= hero.edad %></td>
+          <td><%= hero.poderes.join(', ') %></td>
+          <td>
+            <!-- Botones de acción para editar y eliminar -->
+            <a href="/api/heroes/editar/<%= hero._id %>">Editar</a> | 
+            <a href="/api/heroes/eliminar/<%= hero._id %>" onclick="return confirm('¿Estás seguro de que deseas eliminar este superhéroe?')">Eliminar</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
