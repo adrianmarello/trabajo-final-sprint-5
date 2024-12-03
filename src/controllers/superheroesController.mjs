@@ -11,8 +11,16 @@ import {
 import { renderizarSuperheroe } from "../views/responseView.mjs";
 import { validationResult } from 'express-validator';
 
+const NAVBAR_LINKS = [
+  { text: 'Inicio', href: '/api/heroes', icon: '/icons/home.svg'},
+  { text: 'Agregar Superheroe', href: '/api/heroes/crear', icon: '/icons/home.svg'},
+]
+
 export function mostrarFormularioSuperheroeController(req, res) {
-  res.render('addSuperhero');
+  res.render('addSuperhero', {
+    title: 'Crear Superhéroe',
+    navbarLinks: NAVBAR_LINKS,
+  });
 }
 
 export async function mostrarFormularioActualizarSuperheroeController(req, res) {
@@ -121,7 +129,11 @@ export async function obtenerTodosLosSuperheroesController(req, res) {
     const superheroes = await obtenerTodosLosSuperheroes();
     
     // Renderizar la vista 'dashboard' y pasarle los datos de los superhéroes
-    res.render('dashboard', { heroes: superheroes });
+    res.render('dashboard', { 
+      title: 'Dashboard de Superhéroes',
+      navbarLinks: NAVBAR_LINKS,
+      heroes: superheroes 
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send('Error al obtener los superhéroes');
