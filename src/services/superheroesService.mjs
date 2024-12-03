@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import SuperHeroRepository from "../repositories/superHeroRepository.mjs";
+import SuperHeroRepository from '../repositories/SuperHeroRepository.mjs';
 
 const superHeroRepository = new SuperHeroRepository();
 
