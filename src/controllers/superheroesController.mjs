@@ -27,7 +27,11 @@ export async function mostrarFormularioActualizarSuperheroeController(req, res) 
   try {
     const hero = await obtenerSuperheroePorId(req.params.id);
     if (!hero) return res.status(404).send('Superhéroe no encontrado');
-    res.render('editSuperhero', { hero });
+    res.render('editSuperhero', { 
+      title: 'Editar Superhéroe', 
+      navbarLinks: NAVBAR_LINKS, 
+      hero 
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send('Error al obtener el superhéroe');
