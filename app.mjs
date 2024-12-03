@@ -1,6 +1,6 @@
 import express from 'express';
-import { connectDB } from "./config/dbConfig.mjs";
-import superheroesRoutes from "./routes/superheroesRoutes.mjs";
+import { connectDB } from "./src/config/dbConfig.mjs";
+import superheroesRoutes from "./src/routes/superheroesRoutes.mjs";
 import path from 'path';
 import expressLayouts from 'express-ejs-layouts';
 import { fileURLToPath } from 'url';
@@ -12,13 +12,13 @@ const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
-app.set('views', path.join(__dirname, './views'));
+app.set('views', path.join(__dirname, './src/views'));
 
 app.use(expressLayouts);
 
 app.set('layout', 'layout');
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 app.use(express.json());
 
