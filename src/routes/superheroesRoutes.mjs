@@ -16,9 +16,11 @@ import {
   obtenerTodosLosSuperheroesController 
 } from '../controllers/superheroesController.mjs';
 import superheroValidations from '../validations/superheroValidation.mjs';
+import { obtenerYGuardarPaises } from '../controllers/paisesController.mjs';
 
 const router = express.Router();
 
+router.get('/obtener-y-guardar-paises', obtenerYGuardarPaises);
 router.get('/heroes', obtenerTodosLosSuperheroesController);
 router.get('/heroes/crear', mostrarFormularioSuperheroeController);
 router.post('/heroes', superheroValidations, crearSuperHeroeController);
