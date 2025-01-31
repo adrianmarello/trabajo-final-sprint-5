@@ -52,10 +52,6 @@ export async function crearSuperHeroeController(req, res) {
     return;
   }
   res.redirect('/api/heroes');
-  /*res.status(201).json({ 
-    data: renderizarSuperheroe(result),
-    mensaje: 'Superheroe creado exitosamente' 
-  });*/
 }
 
 export async function actualizarSuperheroeController(req, res) {

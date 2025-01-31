@@ -6,18 +6,15 @@
     <table border="1">
         <thead>
             <tr>
-            <th>Nombre del Pais</th>
-            <th>Capital</th>
-            <th>Fronteras</th>
-            <th>Área</th>
-            <th>Población</th>
-            <th>Índice Gini</th>
-            <th>Zonas Horarias</th>
-            <th>Creador</th>
-            <th>Población Total</th>
-            <th>Área Total</th>
-            <th>Gini Promedio</th>
-            <th>Acciones</th>
+                <th>Nombre del Pais</th>
+                <th>Capital</th>
+                <th>Fronteras</th>
+                <th>Área</th>
+                <th>Población</th>
+                <th>Índice Gini</th>
+                <th>Zonas Horarias</th>
+                <th>Creador</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -41,6 +38,11 @@
                 </td>
             </tr>
             <% }) %>
+            <tr>
+                <td><b>Población total: <%= poblacion_total %></b></td>
+                <td><b>Área total: <%= area_total %></b></td>
+                <td><b>Gini promedio: <%= gini_promedio %></b></td>
+            </tr>
         </tbody>
     </table>
 </div>

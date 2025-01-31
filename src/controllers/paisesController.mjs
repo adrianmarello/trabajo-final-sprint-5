@@ -1,4 +1,5 @@
 import { crearPais, obtenerTodosLosPaises } from "../services/paisesService.mjs";
+import { validationResult } from 'express-validator';
 
 const COUNTRIES_API = process.env.COUNTRIES_API;
 const NAVBAR_LINKS = [
@@ -61,4 +62,29 @@ export async function obtenerTodosLosPaisesController(req, res) {
     console.error(error);
     res.status(500).send('Error al obtener los paises');
   }
+}
+
+export function mostrarFormularioPaisController(req, res) {
+  res.render('addCountry', {
+    title: 'Crear Pais',
+    navbarLinks: NAVBAR_LINKS,
+  });
+}
+
+export async function crearPaisController(req, res) {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  let pais = {...req.body, name: {official: req.body.officialName}, gini: {2019: req.body.gini}};
+  delete pais.officialName;
+  pais.creador = 'Adrián Marello';
+  const result = await crearPais(pais);
+  if(result?.error) {
+    res.status(400).json({ mensaje: 'No se pudo crear el pais', error: result.error });
+    return;
+  }
+  res.redirect('/api/pais/ver-todos');
 }
